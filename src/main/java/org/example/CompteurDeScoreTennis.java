@@ -1,15 +1,15 @@
 package org.example;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.example.entities.Joueur;
 import org.example.entities.Partie;
 
 @AllArgsConstructor
+@Data
 public class CompteurDeScoreTennis {
 
     private Partie partie;
-
-
     public void AjouterPoint(Joueur vainqueur)
     {
         if(!partie.getJoueurUn().isGagnant() && !partie.getJoueurDeux().isGagnant()) {
@@ -40,6 +40,7 @@ public class CompteurDeScoreTennis {
             }
         }
     }
+
     public void AjouterJeu(Joueur vainqueur)
     {
         vainqueur.setJeux(vainqueur.getJeux() + 1);
@@ -53,6 +54,7 @@ public class CompteurDeScoreTennis {
             JeuxDecisif();
         }
     }
+
     public void JeuxDecisif()
     {
         partie.getJoueurUn().setJeux(0);
@@ -87,6 +89,7 @@ public class CompteurDeScoreTennis {
             reinitialiserPoints();
         }
     }
+
     public void reinitialiserPoints()
     {
         partie.getJoueurUn().setPoint(0);
@@ -95,20 +98,6 @@ public class CompteurDeScoreTennis {
         partie.getJoueurDeux().setPointJeuDecisif(0);
         partie.getJoueurUn().setStatut("PAUSE BOISSON");
         partie.getJoueurDeux().setStatut("PAUSE BOISSON");
-    }
-
-    public void displayScore()
-    {
-        System.out.println(partie.getJoueurUn().getPoint());
-        System.out.println(partie.getJoueurUn().getJeux());
-        System.out.println(partie.getJoueurUn().getPointJeuDecisif());
-        System.out.println(partie.getJoueurUn().getSet());
-        System.out.println(partie.getJoueurUn().getStatut());
-        System.out.println(partie.getJoueurDeux().getPoint());
-        System.out.println(partie.getJoueurDeux().getJeux());
-        System.out.println(partie.getJoueurDeux().getPointJeuDecisif());
-        System.out.println(partie.getJoueurDeux().getSet());
-        System.out.println(partie.getJoueurDeux().getStatut());
     }
     public int differenceJeux() {
         return Math.abs(partie.getJoueurDeux().getJeux() - partie.getJoueurUn().getJeux());

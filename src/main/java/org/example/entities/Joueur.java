@@ -22,5 +22,6 @@ public class Joueur {
         pointJeuDecisif = 0;
         gagnant = false;
         statut = "AU VESTIAIRE";
+        this.nom = nom;
     }
 }
